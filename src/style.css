@@ -1,0 +1,264 @@
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+:root {
+  /* define colors */
+  --bg-color-dark: hsl(235, 21%, 11%);
+  --bg-color-light: hsl(0, 0%, 98%);
+  --check-bg-color: hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+  --list-color-dark: #25273d;
+  --list-color-light: #ffffff;
+
+  --text-color-dark: #c8cbe7;
+  --text-color-dark-checked: #4d5067;
+
+  --text-color-light: #494c6b;
+  --text-color-light-checked: #d1d2da;
+  --footer-text-color-dark: #5b5e7e;
+  --footer-text-color-light: #9495a5;
+  --footer-text-color-active: #3a7cfd;
+
+  --main-gray: #979797;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  --width-desktop: 540px;
+
+  --fs-body: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+main.light {
+  background-color: var(--bg-color-light);
+  background-image: url("images/bg-desktop-light.jpg");
+}
+
+main.dark {
+  background-color: var(--bg-color-dark);
+  background-image: url("images/bg-desktop-dark.jpg");
+}
+
+.app-body {
+  width: var(--width-desktop);
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.light .app-body {
+  box-shadow: 0px 10px 8px -4px rgba(100, 100, 100, 0.84);
+  -webkit-box-shadow: 0px 10px 8px -4px rgba(100, 100, 100, 0.84);
+  -moz-box-shadow: 0px 10px 8px -4px rgba(100, 100, 100, 0.84);
+}
+
+.dark .app-body {
+  box-shadow: 0px 10px 8px -4px rgba(0, 0, 0, 0.84);
+  -webkit-box-shadow: 0px 10px 8px -4px rgba(0, 0, 0, 0.84);
+  -moz-box-shadow: 0px 10px 8px -4px rgba(0, 0, 0, 0.84);
+}
+
+/* header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+header .logo {
+  font-size: 40px;
+  font-weight: var(--fw-bold);
+  color: white;
+}
+
+/* new task input */
+
+.newTask,
+.taskList > li {
+  position: relative;
+}
+
+.dark .newTask > input[type="text"],
+.dark .taskList {
+  background-color: var(--list-color-dark);
+  color: var(--text-color-dark);
+}
+
+.light .newTask > input[type="text"],
+.light .taskList {
+  background-color: var(--list-color-light);
+  color: var(--text-color-light);
+}
+
+.newTask input[type="text"] {
+  width: 100%;
+  font-size: var(--fs-body);
+  padding: 20px 4.5rem;
+  border: 0;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--main-gray);
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+input[type="checkbox"]:checked::after {
+  content: url("../public/images/icon-check.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.taskList {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 1.5rem;
+}
+
+.taskList > li {
+  list-style: none;
+  width: 100%;
+  font-size: var(--fs-body);
+  padding: 20px 4.5rem;
+  cursor: grab;
+}
+
+.dark .taskItem > input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+  color: var(--text-color-dark-checked);
+}
+
+.light .taskItem > input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+  color: var(--text-color-light-checked);
+}
+
+/* border bottom */
+.dark .taskList > li {
+  border-bottom: 1px solid var(--text-color-dark-checked);
+}
+.light .taskList > li {
+  border-bottom: 1px solid var(--text-color-light-checked);
+}
+
+/* delete button */
+.taskList > li img {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  cursor: pointer;
+}
+
+.taskList > li:hover img {
+  display: inline;
+}
+
+/* footer menu */
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dark .footer {
+  background-color: var(--list-color-dark);
+}
+.light .footer {
+  background-color: var(--list-color-light);
+}
+
+.dark .footer {
+  color: var(--footer-text-color-dark);
+}
+.light .footer {
+  color: var(--footer-text-color-light);
+}
+
+.footer .filter {
+  display: flex;
+  gap: 0.5rem;
+  font-weight: var(--fw-bold);
+}
+
+.light .footer .filter > span:hover,
+.light .footer .clear-btn:hover {
+  color: #494c6b;
+}
+
+.dark .footer .filter > span:hover,
+.dark .footer .clear-btn:hover {
+  color: white;
+}
+
+.all #all {
+  color: var(--footer-text-color-active);
+}
+
+.active #active {
+  color: var(--footer-text-color-active);
+}
+
+.completed #completed {
+  color: var(--footer-text-color-active);
+}
+
+.footer .filter > span {
+  cursor: pointer;
+}
+
+.footer .clear-btn {
+  cursor: pointer;
+}
