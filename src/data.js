@@ -7,7 +7,7 @@ export const initialTasks = [
 
   {
     id: 2,
-    title: "Find an intership",
+    title: "Find an internship",
     completed: false,
   },
 
